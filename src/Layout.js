@@ -3,13 +3,12 @@ import "twin.macro";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-export const NavBar = () => {
+export const Layout = () => {
   const { t } = useTranslation();
 
   return (
     <>
       <Helmet title="Argent Bank" />
-      <h1 tw="bg-red-500">toto</h1>
       <nav class="main-nav">
         <a class="main-nav-logo" href="./index.html">
           <img
