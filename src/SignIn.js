@@ -10,10 +10,26 @@ export const SignIn = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
+      firstName: "",
+      lastName: "",
     },
   });
+
+  const postUser = async (user) => {
+    const urlUser = "http://localhost:3001/api/v1/user/signup";
+    const res = await fetch(urlUser, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const json = await res.json();
+    return json;
+  };
 
   return (
     <main tw="flex-1 bg-gray-800">
@@ -26,19 +42,19 @@ export const SignIn = () => {
         </div>
         <form
           onSubmit={handleSubmit((data) => {
-            console.log(data);
+            postUser(data);
           })}
         >
           <div class="input-wrapper">
-            <label for="username">Username</label>
+            <label for="email">email</label>
             <input
-              {...register("username", {
+              {...register("email", {
                 required: "This is required.",
               })}
               type="text"
-              id="username"
+              id="email"
             />
-            <p>{errors.username?.message}</p>
+            <p>{errors.email?.message}</p>
           </div>
           <div class="input-wrapper">
             <label for="password">Password</label>
@@ -51,6 +67,28 @@ export const SignIn = () => {
               id="password"
             />
             <p>{errors.password?.message}</p>
+          </div>
+          <div class="input-wrapper">
+            <label for="firstName">firstName</label>
+            <input
+              {...register("firstName", {
+                required: "This is required.",
+              })}
+              type="text"
+              id="firstName"
+            />
+            <p>{errors.firstName?.message}</p>
+          </div>
+          <div class="input-wrapper">
+            <label for="lastName">lastName</label>
+            <input
+              {...register("lastName", {
+                required: "This is required.",
+              })}
+              type="text"
+              id="lastName"
+            />
+            <p>{errors.lastName?.message}</p>
           </div>
           <div class="input-remember">
             <input type="checkbox" id="remember-me" />
