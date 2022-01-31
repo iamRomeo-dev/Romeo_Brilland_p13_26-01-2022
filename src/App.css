@@ -54,6 +54,7 @@ body {
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  display: flex;
 }
 
 .main-nav-item:hover {
@@ -70,14 +71,13 @@ body {
   width: 200px;
 }
 
-/* .hero {
-  background-image: url("../img/bank-tree.jpeg");
+.hero {
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
   height: 300px;
   position: relative;
-} */
+}
 
 .hero-content {
   position: relative;
