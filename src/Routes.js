@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { Layout } from "./Layout";
-import { SignIn } from "./SignIn";
+import { Logged } from "./Logged";
 import { PageSkeleton } from "./shared/Page";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
@@ -18,7 +18,7 @@ export const AppRoutes = () => {
           <Layout />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-in" element={<Logged />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
