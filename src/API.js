@@ -1,5 +1,19 @@
-export const postUser = async (user) => {
+export const signUpUser = async (user) => {
   const urlUser = "http://localhost:3001/api/v1/user/signup";
+  const res = await fetch(urlUser, {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  const json = await res.json();
+  return json;
+};
+
+export const loginUser = async (user) => {
+  const urlUser = "http://localhost:3001/api/v1/user/login";
   const res = await fetch(urlUser, {
     method: "POST",
     headers: {

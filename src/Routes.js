@@ -7,7 +7,8 @@ import { PageSkeleton } from "./shared/Page";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
-import { Logged } from "./pages/Logged";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -18,7 +19,8 @@ export const AppRoutes = () => {
           <Layout />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<Logged />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/sign-in" element={<Login />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
