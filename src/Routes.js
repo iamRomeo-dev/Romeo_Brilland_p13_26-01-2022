@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
+import { User } from "./pages/User";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />
+            <Route path="/user" element={<User />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
