@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "twin.macro";
 import { loginUser } from "../API";
 
@@ -68,7 +68,10 @@ export const Login = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <input type="submit" value="Sing In" className="sign-in-button" />{" "}
+          <input type="submit" value="Sing In" className="sign-in-button" />
+          <Link to="/register" className="sign-in-button" tw="text-center">
+            Register
+          </Link>
         </form>
       </section>
     </main>

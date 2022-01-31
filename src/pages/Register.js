@@ -86,7 +86,7 @@ export const Register = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <input type="submit" value="Sing In" className="sign-in-button" />{" "}
+          <input type="submit" value="Register" className="sign-in-button" />{" "}
         </form>
       </section>
     </main>
