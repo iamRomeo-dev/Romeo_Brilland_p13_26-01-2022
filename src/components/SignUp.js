@@ -19,7 +19,7 @@ export const SignUp = () => {
   });
 
   return (
-    <section class="sign-in-content">
+    <section className="sign-in-content">
       <div tw="flex flex-col gap-4 items-center">
         <div tw="svg:(-ml-1 mr-2 h-5 w-5 text-center)">
           <UserCircleIcon />
@@ -31,8 +31,8 @@ export const SignUp = () => {
           postUser(data);
         })}
       >
-        <div class="input-wrapper">
-          <label for="email">email</label>
+        <div className="input-wrapper">
+          <label htmlFor="email">email</label>
           <input
             {...register("email", {
               required: "Email is required",
@@ -47,8 +47,8 @@ export const SignUp = () => {
           />
           <p>{errors.email?.message}</p>
         </div>
-        <div class="input-wrapper">
-          <label for="password">Password</label>
+        <div className="input-wrapper">
+          <label htmlFor="password">Password</label>
           <input
             {...register("password", {
               required: "This is required.",
@@ -59,8 +59,8 @@ export const SignUp = () => {
           />
           <p>{errors.password?.message}</p>
         </div>
-        <div class="input-wrapper">
-          <label for="firstName">firstName</label>
+        <div className="input-wrapper">
+          <label htmlFor="firstName">firstName</label>
           <input
             {...register("firstName", {
               required: "This is required.",
@@ -70,8 +70,8 @@ export const SignUp = () => {
           />
           <p>{errors.firstName?.message}</p>
         </div>
-        <div class="input-wrapper">
-          <label for="lastName">lastName</label>
+        <div className="input-wrapper">
+          <label htmlFor="lastName">lastName</label>
           <input
             {...register("lastName", {
               required: "This is required.",
@@ -81,11 +81,11 @@ export const SignUp = () => {
           />
           <p>{errors.lastName?.message}</p>
         </div>
-        <div class="input-remember">
+        <div className="input-remember">
           <input type="checkbox" id="remember-me" />
-          <label for="remember-me">Remember me</label>
+          <label htmlFor="remember-me">Remember me</label>
         </div>
-        <input type="submit" value="Sing In" class="sign-in-button" />{" "}
+        <input type="submit" value="Sing In" className="sign-in-button" />{" "}
       </form>
     </section>
   );

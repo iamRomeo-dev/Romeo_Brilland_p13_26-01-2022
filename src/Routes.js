@@ -3,11 +3,11 @@ import "twin.macro";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { Layout } from "./Layout";
-import { Logged } from "./Logged";
 import { PageSkeleton } from "./shared/Page";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
+import { Layout } from "./components/Layout";
+import { Logged } from "./pages/Logged";
 
 export const AppRoutes = () => {
   const location = useLocation();

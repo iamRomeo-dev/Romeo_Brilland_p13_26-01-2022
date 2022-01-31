@@ -6,7 +6,7 @@ const Feature = ({ logo, tittle, description }) => {
   return (
     <div tw="flex-1 p-10">
       {logo}
-      <h3 class="feature-item-title">{tittle}</h3>
+      <h3 className="feature-item-title">{tittle}</h3>
       <p tw="content-center">{description}</p>
     </div>
   );

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import "twin.macro";
-import { SignUp } from "./components/SignUp";
+import { SignUp } from "../components/SignUp";
 
 export const Logged = () => {
   return (
