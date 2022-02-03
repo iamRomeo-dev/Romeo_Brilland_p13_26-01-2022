@@ -22,7 +22,7 @@ export const Layout = () => {
           />
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
-        {access_token !== null && (
+        {access_token && (
           <Link
             tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
             to="/user"

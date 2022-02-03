@@ -23,7 +23,7 @@ export const Login = () => {
     const correctUser = await loginUser(user);
     if (correctUser) {
       localStorage.removeItem("signUpUser_status");
-      history("/home");
+      history("/");
     }
   };
 
