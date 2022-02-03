@@ -64,10 +64,7 @@ export const Edit = () => {
             />
             <p>{errors.lastName?.message}</p>
           </div>
-          <div className="input-remember">
-            <input type="checkbox" id="remember-me" />
-            <label htmlFor="remember-me">Remember me</label>
-          </div>
+
           <input type="submit" value="Edit" className="sign-in-button" />
         </form>
       </section>
