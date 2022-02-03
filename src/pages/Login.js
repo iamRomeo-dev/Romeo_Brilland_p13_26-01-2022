@@ -24,6 +24,7 @@ export const Login = () => {
     if (correctUser) {
       localStorage.removeItem("signUpUser_status");
       history("/");
+      window.location.reload();
     }
   };
 

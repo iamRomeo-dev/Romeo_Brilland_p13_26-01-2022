@@ -10,6 +10,16 @@ export const Layout = () => {
   const location = useLocation();
   const firstName = localStorage.getItem("firstName");
   const access_token = localStorage.getItem("access_token");
+
+  const logOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <>
       <Helmet title="Argent Bank" />
@@ -22,15 +32,26 @@ export const Layout = () => {
           />
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
+
+        {/* Condition if logged*/}
         {access_token && (
-          <Link
-            tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
-            to="/user"
-          >
-            <UserCircleIcon /> {firstName}
-          </Link>
+          <div tw="flex gap-8">
+            <Link
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              to="/user"
+            >
+              <UserCircleIcon /> {capitalizeFirstLetter(firstName)}
+            </Link>
+            <button
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              onClick={logOut}
+            >
+              <UserCircleIcon /> Log out
+            </button>
+          </div>
         )}
-        {/* Condition for the user login or registration */}
+
+        {/* Condition for the user login or registration if not logged*/}
         {access_token === null &&
           (location.pathname === "/register" || location.pathname === "/") && (
             <Link

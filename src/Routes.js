@@ -33,29 +33,3 @@ export const AppRoutes = () => {
     </ErrorBoundary>
   );
 };
-
-// const AuthenticatedRoutes = () => {
-//   const location = useLocation();
-//   return (
-//     <ErrorBoundary FallbackComponent={PageSkeleton} key={location.pathname}>
-//       <Suspense fallback={null}>
-//         <div tw="flex flex-col min-h-screen">
-//           <LayoutAuth />
-//           <Routes>
-//             {/* <Route path="/home" element={<Home />} />
-//             <Route path="/register" element={<Register />} />
-//             <Route path="/sign-in" element={<Login />} /> */}
-//             <Route path="/user" element={<User />} />
-//             <Route path="*" element={<Navigate to="/home" />} />
-//           </Routes>
-//           <Footer />
-//         </div>
-//       </Suspense>
-//     </ErrorBoundary>
-//   );
-// };
-
-// export const AppRoutes = () => {
-//   const access_token = localStorage.getItem("access_token");
-//   return access_token ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />;
-// };
