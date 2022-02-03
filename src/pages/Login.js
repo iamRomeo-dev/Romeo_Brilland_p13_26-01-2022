@@ -18,9 +18,11 @@ export const Login = () => {
     },
   });
 
-  const toto = (user) => {
-    loginUser(user);
-    history("/user");
+  const loginRegister = async (user) => {
+    const correctUser = await loginUser(user);
+    if (correctUser) {
+      history("/home");
+    }
   };
   return (
     <main tw="flex-1 bg-gray-800">
@@ -33,7 +35,7 @@ export const Login = () => {
         </div>
         <form
           onSubmit={handleSubmit((data) => {
-            toto(data);
+            loginRegister(data);
           })}
         >
           <div className="input-wrapper">
@@ -68,7 +70,7 @@ export const Login = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <input type="submit" value="Sing In" className="sign-in-button" />
+          <input type="submit" value="Sign In" className="sign-in-button" />
           <Link to="/register" className="sign-in-button" tw="text-center">
             Register
           </Link>

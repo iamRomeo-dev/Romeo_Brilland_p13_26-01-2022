@@ -22,6 +22,10 @@ export const loginUser = async (user) => {
     },
     body: JSON.stringify(user),
   });
-  const json = await res.json();
-  return json;
+  if (res.status === 200) {
+    const json = await res.json();
+    return json;
+  } else {
+    return null;
+  }
 };
