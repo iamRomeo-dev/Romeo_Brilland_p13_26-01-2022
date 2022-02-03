@@ -34,7 +34,7 @@ export const Login = () => {
     <main tw="flex-1 bg-gray-800">
       <section className="sign-in-content">
         <div tw="flex flex-col gap-4 items-center">
-          <div tw="svg:(-ml-1 mr-2 h-5 w-5 text-center)">
+          <div tw="svg:(h-5 w-5 text-center)">
             <UserCircleIcon />
           </div>
           <h1>Sign In</h1>

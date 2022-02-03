@@ -34,13 +34,13 @@ export const Layout = () => {
         {access_token && (
           <div tw="flex gap-8">
             <Link
-              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
               to="/user"
             >
               <UserCircleIcon /> {capitalizeFirstLetter(firstName)}
             </Link>
             <button
-              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
               onClick={logOut}
             >
               <UserCircleIcon /> Log out
@@ -52,7 +52,7 @@ export const Layout = () => {
         {access_token === null &&
           (location.pathname === "/register" || location.pathname === "/") && (
             <Link
-              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
               to="/sign-in"
             >
               <UserCircleIcon /> {t("NavBar.signin")}
@@ -60,7 +60,7 @@ export const Layout = () => {
           )}
         {access_token === null && location.pathname === "/sign-in" && (
           <Link
-            tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+            tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
             to="/register"
           >
             <UserCircleIcon /> Register
