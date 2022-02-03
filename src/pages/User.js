@@ -14,9 +14,11 @@ export const User = () => {
           <br />
           {capitalizeFirstLetter(firstName)} {capitalizeFirstLetter(lastName)}!
         </h1>
-        <Link to="/edit" className="edit-button">
-          Edit Name
-        </Link>
+        <button className="edit-button">
+          <Link to="/edit" className="edit-button">
+            Edit Name
+          </Link>
+        </button>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
