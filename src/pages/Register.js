@@ -1,10 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "twin.macro";
 import { signUpUser } from "../API";
 
 export const Register = () => {
+  const history = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -18,6 +21,13 @@ export const Register = () => {
     },
   });
 
+  const signUpRegister = async (user) => {
+    const correctUser = await signUpUser(user);
+    if (correctUser) {
+      history("/sign-in");
+    }
+  };
+
   return (
     <main tw="flex-1 bg-gray-800">
       <section className="sign-in-content">
@@ -29,7 +39,7 @@ export const Register = () => {
         </div>
         <form
           onSubmit={handleSubmit((data) => {
-            signUpUser(data);
+            signUpRegister(data);
           })}
         >
           <div className="input-wrapper">

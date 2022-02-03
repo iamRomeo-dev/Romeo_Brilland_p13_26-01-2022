@@ -3,6 +3,7 @@ import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import "twin.macro";
+import tw from "twin.macro";
 import { loginUser } from "../API";
 
 export const Login = () => {
@@ -21,9 +22,18 @@ export const Login = () => {
   const loginRegister = async (user) => {
     const correctUser = await loginUser(user);
     if (correctUser) {
+      localStorage.removeItem("signUpUser_status");
       history("/home");
     }
   };
+
+  const signUpUser_status = localStorage.getItem("signUpUser_status");
+
+  //  const ListItemLink = styled(Link)(
+  //   tw`block hover:bg-gray-50`,
+  //   ({ active }) => active && tw`hover:bg-primary-100`
+  // );
+
   return (
     <main tw="flex-1 bg-gray-800">
       <section className="sign-in-content">
@@ -32,11 +42,18 @@ export const Login = () => {
             <UserCircleIcon />
           </div>
           <h1>Sign In</h1>
+          {signUpUser_status && (
+            <p tw="text-sm font-medium text-gray-700 text-center">
+              Félicitation ! Votre inscription a été un succès.
+            </p>
+          )}
         </div>
         <form
           onSubmit={handleSubmit((data) => {
             loginRegister(data);
           })}
+          // Add margin-top if the signUpUser_status message appears
+          css={signUpUser_status && tw`mt-2`}
         >
           <div className="input-wrapper">
             <label htmlFor="email">email</label>

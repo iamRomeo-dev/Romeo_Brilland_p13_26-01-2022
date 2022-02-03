@@ -8,8 +8,13 @@ export const signUpUser = async (user) => {
     },
     body: JSON.stringify(user),
   });
-  const json = await res.json();
-  return json;
+  if (res.status === 200) {
+    localStorage.setItem("signUpUser_status", res.status);
+    const json = await res.json();
+    return json;
+  } else {
+    return null;
+  }
 };
 
 export const loginUser = async (user) => {
