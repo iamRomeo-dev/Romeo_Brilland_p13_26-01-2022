@@ -55,3 +55,22 @@ export const profileUser = async (access_token) => {
     return null;
   }
 };
+
+export const profileUserEdit = async (access_token, user) => {
+  const url = "http://localhost:3001/api/v1/user/profile";
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: "Bearer" + access_token,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  if (res.status === 200) {
+    const json = await res.json();
+    return json;
+  } else {
+    return null;
+  }
+};

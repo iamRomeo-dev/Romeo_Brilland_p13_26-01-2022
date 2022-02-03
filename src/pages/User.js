@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { Link } from "react-router-dom";
 import "twin.macro";
 import { capitalizeFirstLetter } from "../shared/SmallFunctions";
 
@@ -13,7 +14,9 @@ export const User = () => {
           <br />
           {capitalizeFirstLetter(firstName)} {capitalizeFirstLetter(lastName)}!
         </h1>
-        <button className="edit-button">Edit Name</button>
+        <Link to="/edit" className="edit-button">
+          Edit Name
+        </Link>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">

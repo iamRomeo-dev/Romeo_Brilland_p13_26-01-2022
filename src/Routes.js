@@ -10,6 +10,7 @@ import { Layout } from "./components/Layout";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { User } from "./pages/User";
+import { Edit } from "./pages/Edit";
 
 export const AppRoutes = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />
             {access_token && <Route path="/user" element={<User />} />}
+            {access_token && <Route path="/edit" element={<Edit />} />}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
