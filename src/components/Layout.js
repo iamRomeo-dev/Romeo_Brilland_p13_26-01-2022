@@ -8,7 +8,8 @@ import { Link, useLocation } from "react-router-dom";
 export const Layout = () => {
   const { t } = useTranslation();
   const location = useLocation();
-
+  const firstName = localStorage.getItem("firstName");
+  const access_token = localStorage.getItem("access_token");
   return (
     <>
       <Helmet title="Argent Bank" />
@@ -21,17 +22,25 @@ export const Layout = () => {
           />
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
-
-        {/* Condition for the user login or registration */}
-        {(location.pathname === "/register" || location.pathname === "/") && (
+        {access_token !== null && (
           <Link
             tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
-            to="/sign-in"
+            to="/user"
           >
-            <UserCircleIcon /> {t("NavBar.signin")}
+            <UserCircleIcon /> {firstName}
           </Link>
         )}
-        {location.pathname === "/sign-in" && (
+        {/* Condition for the user login or registration */}
+        {access_token === null &&
+          (location.pathname === "/register" || location.pathname === "/") && (
+            <Link
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
+              to="/sign-in"
+            >
+              <UserCircleIcon /> {t("NavBar.signin")}
+            </Link>
+          )}
+        {access_token === null && location.pathname === "/sign-in" && (
           <Link
             tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(-ml-1 mr-2 h-5 w-5)"
             to="/register"

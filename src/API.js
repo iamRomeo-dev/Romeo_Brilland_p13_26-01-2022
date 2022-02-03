@@ -29,6 +29,27 @@ export const loginUser = async (user) => {
   });
   if (res.status === 200) {
     const json = await res.json();
+    localStorage.setItem("access_token", json.body.token);
+    profileUser(json.body.token);
+    return json;
+  } else {
+    return null;
+  }
+};
+
+export const profileUser = async (access_token) => {
+  const urlUser = "http://localhost:3001/api/v1/user/profile";
+  const res = await fetch(urlUser, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer" + access_token,
+      Accept: "application/json",
+    },
+  });
+  if (res.status === 200) {
+    const json = await res.json();
+    localStorage.setItem("firstName", json.body.firstName);
+    localStorage.setItem("lastName", json.body.lastName);
     return json;
   } else {
     return null;

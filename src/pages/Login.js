@@ -29,11 +29,6 @@ export const Login = () => {
 
   const signUpUser_status = localStorage.getItem("signUpUser_status");
 
-  //  const ListItemLink = styled(Link)(
-  //   tw`block hover:bg-gray-50`,
-  //   ({ active }) => active && tw`hover:bg-primary-100`
-  // );
-
   return (
     <main tw="flex-1 bg-gray-800">
       <section className="sign-in-content">
