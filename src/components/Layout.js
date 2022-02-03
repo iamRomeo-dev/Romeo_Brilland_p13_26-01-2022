@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { Link, useLocation } from "react-router-dom";
+import { capitalizeFirstLetter } from "../shared/SmallFunctions";
 
 export const Layout = () => {
   const { t } = useTranslation();
@@ -14,10 +15,6 @@ export const Layout = () => {
   const logOut = () => {
     localStorage.clear();
     window.location.reload();
-  };
-
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (
