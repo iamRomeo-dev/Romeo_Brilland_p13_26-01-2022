@@ -3,7 +3,7 @@ import "twin.macro";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
-import { PageSkeleton } from "./shared/Page";
+import { PageSkeleton, Page404 } from "./pages/Page";
 import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
 import { Layout } from "./components/Layout";
@@ -23,6 +23,7 @@ export const AppRoutes = () => {
           <Layout />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/page-404" element={<Page404 />} />
             <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />
             {access_token && <Route path="/user" element={<User />} />}

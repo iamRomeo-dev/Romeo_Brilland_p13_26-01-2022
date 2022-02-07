@@ -25,6 +25,8 @@ export const Register = () => {
     const correctUser = await signUpUser(user);
     if (correctUser) {
       history("/sign-in");
+    } else {
+      history("/page-404");
     }
   };
 

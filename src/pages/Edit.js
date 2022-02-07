@@ -25,6 +25,8 @@ export const Edit = () => {
       profileUser(access_token);
       history("/user");
       window.location.reload();
+    } else {
+      history("/page-404");
     }
   };
 
