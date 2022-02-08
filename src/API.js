@@ -1,5 +1,5 @@
 export const signUpUser = async (user) => {
-  const urlUser = "http://localhost:3001/api/v1/user/signup";
+  const urlUser = `${process.env.REACT_APP_API_URL}/api/v1/user/signup`;
   try {
     const res = await fetch(urlUser, {
       method: "POST",
@@ -22,7 +22,7 @@ export const signUpUser = async (user) => {
 };
 
 export const loginUser = async (user) => {
-  const urlUser = "http://localhost:3001/api/v1/user/login";
+  const urlUser = `${process.env.REACT_APP_API_URL}/api/v1/user/login`;
   try {
     const res = await fetch(urlUser, {
       method: "POST",
@@ -46,7 +46,7 @@ export const loginUser = async (user) => {
 };
 
 export const profileUser = async (access_token) => {
-  const urlUser = "http://localhost:3001/api/v1/user/profile";
+  const urlUser = `${process.env.REACT_APP_API_URL}/api/v1/user/profile`;
   try {
     const res = await fetch(urlUser, {
       method: "POST",
@@ -69,7 +69,7 @@ export const profileUser = async (access_token) => {
 };
 
 export const profileUserEdit = async (access_token, user) => {
-  const url = "http://localhost:3001/api/v1/user/profile";
+  const url = `${process.env.REACT_APP_API_URL}/api/v1/user/profile`;
   try {
     const res = await fetch(url, {
       method: "PUT",
