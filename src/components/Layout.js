@@ -6,7 +6,7 @@ import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { Link, useLocation } from "react-router-dom";
 import { capitalizeFirstLetter } from "../shared/SmallFunctions";
 
-export const Layout = () => {
+const Layout = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const firstName = localStorage.getItem("firstName");
@@ -70,3 +70,5 @@ export const Layout = () => {
     </>
   );
 };
+
+export default Layout;

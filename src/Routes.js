@@ -1,16 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import "twin.macro";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { PageSkeleton, Page404 } from "./pages/Page";
-import { Home } from "./pages/Home";
-import { Footer } from "./components/Footer";
-import { Layout } from "./components/Layout";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
-import { User } from "./pages/User";
-import { Edit } from "./pages/Edit";
+
+const Home = React.lazy(() => import("./pages/Home"));
+const Footer = React.lazy(() => import("./components/Footer"));
+const Layout = React.lazy(() => import("./components/Layout"));
+const Login = React.lazy(() => import("./pages/Login"));
+const Register = React.lazy(() => import("./pages/Register"));
+const User = React.lazy(() => import("./pages/User"));
+const Edit = React.lazy(() => import("./pages/Edit"));
 
 export const AppRoutes = () => {
   const location = useLocation();

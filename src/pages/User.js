@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "twin.macro";
 import { capitalizeFirstLetter } from "../shared/SmallFunctions";
 
-export const User = () => {
+const User = () => {
   const firstName = localStorage.getItem("firstName");
   const lastName = localStorage.getItem("lastName");
   return (
@@ -54,3 +54,4 @@ export const User = () => {
     </main>
   );
 };
+export default User;

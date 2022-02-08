@@ -1,7 +1,7 @@
 import { Banner } from "../components/Banner";
 import { UnderBanner } from "../components/UnderBanner";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Banner />
@@ -9,3 +9,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

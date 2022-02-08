@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "twin.macro";
 import { signUpUser } from "../API";
 
-export const Register = () => {
+const Register = () => {
   const history = useNavigate();
 
   const {
@@ -104,3 +104,5 @@ export const Register = () => {
     </main>
   );
 };
+
+export default Register;

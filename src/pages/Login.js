@@ -6,7 +6,7 @@ import "twin.macro";
 import tw from "twin.macro";
 import { loginUser } from "../API";
 
-export const Login = () => {
+const Login = () => {
   const history = useNavigate();
   const {
     register,
@@ -99,3 +99,5 @@ export const Login = () => {
     </main>
   );
 };
+
+export default Login;

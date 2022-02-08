@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "twin.macro";
 import { profileUser, profileUserEdit } from "../API";
 
-export const Edit = () => {
+const Edit = () => {
   const history = useNavigate();
   const access_token = localStorage.getItem("access_token");
   const {
@@ -67,9 +67,15 @@ export const Edit = () => {
             <p>{errors.lastName?.message}</p>
           </div>
 
-          <input type="submit" value="Edit" className="sign-in-button" />
+          <input
+            type="submit"
+            value="Edit"
+            className="sign-in-button"
+            tw="cursor-pointer"
+          />
         </form>
       </section>
     </main>
   );
 };
+export default Edit;
