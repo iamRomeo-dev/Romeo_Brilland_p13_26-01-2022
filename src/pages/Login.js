@@ -85,7 +85,12 @@ export const Login = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <input type="submit" value="Sign In" className="sign-in-button" />
+          <input
+            type="submit"
+            value="Sign In"
+            className="sign-in-button"
+            tw="cursor-pointer"
+          />
           <Link to="/register" className="sign-in-button" tw="text-center">
             Register
           </Link>
