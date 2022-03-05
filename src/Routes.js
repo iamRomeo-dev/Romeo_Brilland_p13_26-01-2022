@@ -4,7 +4,6 @@ import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { PageSkeleton, Page404 } from "./pages/Page";
-import { PlayPause } from "./components/PlayPause";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Footer = React.lazy(() => import("./components/Footer"));
@@ -25,7 +24,6 @@ export const AppRoutes = () => {
           <Layout />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/a" element={<PlayPause />} />
             <Route path="/page-404" element={<Page404 />} />
             <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />
