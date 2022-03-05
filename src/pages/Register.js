@@ -1,12 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "twin.macro";
 import { signUpUser } from "../API";
+import { changeName, setSignUp } from "../features/counter/counterSlice";
 
 const Register = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -24,6 +27,7 @@ const Register = () => {
   const signUpRegister = async (user) => {
     const correctUser = await signUpUser(user);
     if (correctUser) {
+      dispatch(setSignUp());
       history("/sign-in");
     } else {
       history("/page-404");

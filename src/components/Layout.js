@@ -5,12 +5,14 @@ import { useTranslation } from "react-i18next";
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { Link, useLocation } from "react-router-dom";
 import { capitalizeFirstLetter } from "../shared/SmallFunctions";
+import { useSelector } from "react-redux";
 
 const Layout = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const firstName = localStorage.getItem("firstName");
-  const access_token = localStorage.getItem("access_token");
+  // const access_token = localStorage.getItem("access_token");
+  const access_token = useSelector((state) => state.controlAuthentification);
 
   const logOut = () => {
     localStorage.clear();
@@ -31,7 +33,7 @@ const Layout = () => {
         </Link>
 
         {/* Condition if logged*/}
-        {access_token && (
+        {access_token.access_token_boolean === true && (
           <div tw="flex gap-8">
             <Link
               tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
@@ -49,7 +51,8 @@ const Layout = () => {
         )}
 
         {/* Condition for the user login or registration if not logged*/}
-        {access_token === null &&
+        {/* Condition if logged*/}
+        {access_token.access_token_boolean === false &&
           (location.pathname === "/register" || location.pathname === "/") && (
             <Link
               tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
@@ -58,14 +61,16 @@ const Layout = () => {
               <UserCircleIcon /> {t("NavBar.signin")}
             </Link>
           )}
-        {access_token === null && location.pathname === "/sign-in" && (
-          <Link
-            tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
-            to="/register"
-          >
-            <UserCircleIcon /> Register
-          </Link>
-        )}
+        {/* Condition if logged*/}
+        {access_token.access_token_boolean === false &&
+          location.pathname === "/sign-in" && (
+            <Link
+              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
+              to="/register"
+            >
+              <UserCircleIcon /> Register
+            </Link>
+          )}
       </nav>
     </>
   );

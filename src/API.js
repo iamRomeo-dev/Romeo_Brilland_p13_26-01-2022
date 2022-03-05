@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const signUpUser = async (user) => {
   const urlUser = `${process.env.REACT_APP_API_URL}/api/v1/user/signup`;
   try {
@@ -10,7 +12,6 @@ export const signUpUser = async (user) => {
       body: JSON.stringify(user),
     });
     if (res.status === 200) {
-      localStorage.setItem("signUpUser_status", res.status);
       const json = await res.json();
       return json;
     } else {
@@ -19,6 +20,7 @@ export const signUpUser = async (user) => {
   } catch (error) {
     console.log(error);
   }
+  return;
 };
 
 export const loginUser = async (user) => {

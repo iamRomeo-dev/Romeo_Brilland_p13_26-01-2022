@@ -1,26 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "jean",
-  age: 30,
+  signUpUser_status: 0,
+  access_token_boolean: false,
 };
 
 export const counterSlice = createSlice({
-  name: "counter",
+  name: "controlAuthentification",
   initialState,
 
   reducers: {
     getContacts: (state) => {
       return state.value;
     },
-    changeName: (state) => {
-      console.log("tototo");
-      return { ...state, name: "toto" };
+    setSignUp: (state) => {
+      console.log(initialState);
+      return { ...state, signUpUser_status: 200 };
+    },
+
+    setLogIn: (state) => {
+      console.log(initialState);
+      localStorage.setItem("access_token", 777777);
+      return { ...state, access_token_boolean: !state.access_token_boolean };
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { getContacts, changeName } = counterSlice.actions;
+export const { getContacts, setSignUp, setLogIn } = counterSlice.actions;
 
 export default counterSlice.reducer;

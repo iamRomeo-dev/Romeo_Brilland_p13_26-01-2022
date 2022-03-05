@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { PageSkeleton, Page404 } from "./pages/Page";
+import { useSelector } from "react-redux";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Footer = React.lazy(() => import("./components/Footer"));
@@ -15,7 +16,8 @@ const Edit = React.lazy(() => import("./pages/Edit"));
 
 export const AppRoutes = () => {
   const location = useLocation();
-  const access_token = localStorage.getItem("access_token");
+  // const access_token = localStorage.getItem("access_token");
+  const access_token = useSelector((state) => state.controlAuthentification);
 
   return (
     <ErrorBoundary FallbackComponent={PageSkeleton} key={location.pathname}>
@@ -27,8 +29,12 @@ export const AppRoutes = () => {
             <Route path="/page-404" element={<Page404 />} />
             <Route path="/register" element={<Register />} />
             <Route path="/sign-in" element={<Login />} />
-            {access_token && <Route path="/user" element={<User />} />}
-            {access_token && <Route path="/edit" element={<Edit />} />}
+            {access_token.access_token_boolean === true && (
+              <Route path="/user" element={<User />} />
+            )}
+            {access_token.access_token_boolean === true && (
+              <Route path="/edit" element={<Edit />} />
+            )}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
           <Footer />
