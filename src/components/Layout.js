@@ -11,7 +11,7 @@ const Layout = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const firstName = localStorage.getItem("firstName");
-  // const access_token = localStorage.getItem("access_token");
+  const access_token_storage = localStorage.getItem("access_token");
   const access_token = useSelector((state) => state.controlAuthentification);
 
   const logOut = () => {
@@ -33,7 +33,7 @@ const Layout = () => {
         </Link>
 
         {/* Condition if logged*/}
-        {access_token.access_token_boolean === true && (
+        {access_token_storage && (
           <div tw="flex gap-8">
             <Link
               tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
@@ -52,7 +52,7 @@ const Layout = () => {
 
         {/* Condition for the user login or registration if not logged*/}
         {/* Condition if logged*/}
-        {access_token.access_token_boolean === false &&
+        {access_token_storage === null &&
           (location.pathname === "/register" || location.pathname === "/") && (
             <Link
               tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
@@ -62,15 +62,14 @@ const Layout = () => {
             </Link>
           )}
         {/* Condition if logged*/}
-        {access_token.access_token_boolean === false &&
-          location.pathname === "/sign-in" && (
-            <Link
-              tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
-              to="/register"
-            >
-              <UserCircleIcon /> Register
-            </Link>
-          )}
+        {access_token_storage === null && location.pathname === "/sign-in" && (
+          <Link
+            tw="inline-flex items-center justify-center ml-auto no-underline font-bold hover:underline svg:(mr-2 h-5 w-5)"
+            to="/register"
+          >
+            <UserCircleIcon /> Register
+          </Link>
+        )}
       </nav>
     </>
   );

@@ -20,7 +20,6 @@ export const counterSlice = createSlice({
 
     setLogIn: (state) => {
       console.log(initialState);
-      localStorage.setItem("access_token", 777777);
       return { ...state, access_token_boolean: !state.access_token_boolean };
     },
   },

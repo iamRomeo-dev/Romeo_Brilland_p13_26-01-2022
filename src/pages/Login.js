@@ -27,14 +27,16 @@ const Login = () => {
     const correctUser = await loginUser(user);
     if (correctUser) {
       dispatch(setLogIn());
-      // localStorage.removeItem("signUpUser_status");
+      localStorage.removeItem("signUpUser_status");
       history("/");
+      window.location.reload();
     } else {
       history("/page-404");
     }
   };
 
   const count = useSelector((state) => state.controlAuthentification);
+  const signUpUser_status = localStorage.getItem("signUpUser_status");
 
   return (
     <main tw="flex-1 bg-gray-800">
@@ -44,18 +46,21 @@ const Login = () => {
             <UserCircleIcon />
           </div>
           <h1>Sign In</h1>
-          {count.signUpUser_status === 200 && (
-            <p tw="text-sm font-medium text-gray-700 text-center">
-              Félicitation ! Votre inscription a été un succès.
-            </p>
-          )}
+          {signUpUser_status ||
+            (count.signUpUser_status === 200 && (
+              <p tw="text-sm font-medium text-gray-700 text-center">
+                Félicitation ! Votre inscription a été un succès.
+              </p>
+            ))}
         </div>
         <form
           onSubmit={handleSubmit((data) => {
             loginRegister(data);
           })}
           // Add margin-top if the signUpUser_status message appears
-          css={count.signUpUser_status === 200 && tw`mt-2`}
+          css={
+            signUpUser_status || (count.signUpUser_status === 200 && tw`mt-2`)
+          }
         >
           <div className="input-wrapper">
             <label htmlFor="email">email</label>
