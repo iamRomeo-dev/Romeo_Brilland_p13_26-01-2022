@@ -10,7 +10,7 @@ export const signUpUser = async (user) => {
       body: JSON.stringify(user),
     });
     if (res.status === 200) {
-      localStorage.setItem("signUpUser_status", res.status);
+      // localStorage.setItem("signUpUser_status", res.status);
       const json = await res.json();
       return json;
     } else {

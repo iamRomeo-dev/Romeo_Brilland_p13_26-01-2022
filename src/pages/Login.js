@@ -30,7 +30,9 @@ const Login = () => {
     }
   };
 
-  const signUpUser_status = localStorage.getItem("signUpUser_status");
+  const signUpUser_status_boolean = localStorage.getItem(
+    "signUpUser_status_boolean"
+  );
 
   return (
     <main tw="flex-1 bg-gray-800">
@@ -40,7 +42,7 @@ const Login = () => {
             <UserCircleIcon />
           </div>
           <h1>Sign In</h1>
-          {signUpUser_status && (
+          {signUpUser_status_boolean === true && (
             <p tw="text-sm font-medium text-gray-700 text-center">
               Félicitation ! Votre inscription a été un succès.
             </p>
@@ -50,8 +52,8 @@ const Login = () => {
           onSubmit={handleSubmit((data) => {
             loginRegister(data);
           })}
-          // Add margin-top if the signUpUser_status message appears
-          css={signUpUser_status && tw`mt-2`}
+          // Add margin-top if the signUpUser_status_boolean message appears
+          css={signUpUser_status_boolean === true && tw`mt-2`}
         >
           <div className="input-wrapper">
             <label htmlFor="email">email</label>

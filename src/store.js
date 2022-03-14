@@ -1,3 +1,4 @@
+import produce from "immer";
 import { createStore } from "redux";
 
 // state
@@ -6,25 +7,28 @@ const initialState = {
   player2: 0,
   advantage: null,
   winner: null,
-  playing: true,
+  status: false,
+  history: [],
 };
 
 // actions creators
+console.log("initialState", initialState);
 
 export const playPause = () => ({ type: "playPause" });
 
 function reducer(state = initialState, action) {
   if (action.type === "playPause") {
-    if (state.winner) {
-      return state;
-    }
-    return {
-      ...state,
-      playing: !state.playing,
-    };
+    return produce(state, (draft) => {
+      draft.status = !draft.status;
+      localStorage.setItem("signUpUser_status_boolean", draft.status);
+    });
   }
-
   return state;
 }
 
 export const store = createStore(reducer);
+
+store.subscribe(() => {
+  console.log("Nouveau state:");
+  console.log(store.getState());
+});
