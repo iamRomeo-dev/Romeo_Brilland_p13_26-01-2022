@@ -1,13 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import UserCircleIcon from "@heroicons/react/solid/UserCircleIcon";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "twin.macro";
 import tw from "twin.macro";
 import { loginUser } from "../API";
+import { setToken } from "../store";
 
 const Login = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -22,7 +26,8 @@ const Login = () => {
   const loginRegister = async (user) => {
     const correctUser = await loginUser(user);
     if (correctUser) {
-      localStorage.removeItem("signUpUser_status");
+      localStorage.removeItem("signUpUser_status_boolean");
+      dispatch(setToken(localStorage.getItem("access_token")));
       history("/");
       window.location.reload();
     } else {

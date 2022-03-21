@@ -10,7 +10,7 @@ const Layout = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const firstName = localStorage.getItem("firstName");
-  const access_token = localStorage.getItem("access_token");
+  const access_token = localStorage.getItem("access_token_redux");
 
   const logOut = () => {
     localStorage.clear();

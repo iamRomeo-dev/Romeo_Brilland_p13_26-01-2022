@@ -16,7 +16,7 @@ const Edit = React.lazy(() => import("./pages/Edit"));
 
 export const AppRoutes = () => {
   const location = useLocation();
-  const access_token = localStorage.getItem("access_token");
+  const access_token = localStorage.getItem("access_token_redux");
 
   return (
     <ErrorBoundary FallbackComponent={PageSkeleton} key={location.pathname}>

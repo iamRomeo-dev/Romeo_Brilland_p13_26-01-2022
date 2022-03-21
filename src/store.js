@@ -12,17 +12,29 @@ const initialState = {
 };
 
 // actions creators
-console.log("initialState", initialState);
+export const registerStatus = () => ({ type: "registerStatus" });
 
-export const playPause = () => ({ type: "playPause" });
+export const setToken = (token) => ({
+  type: "setToken",
+  payload: { player: token },
+});
 
 function reducer(state = initialState, action) {
-  if (action.type === "playPause") {
+  if (action.type === "registerStatus") {
     return produce(state, (draft) => {
       draft.status = !draft.status;
       localStorage.setItem("signUpUser_status_boolean", draft.status);
     });
   }
+
+  if (action.type === "setToken") {
+    return produce(state, (draft) => {
+      const access_token = localStorage.getItem("access_token");
+      localStorage.setItem("access_token_redux", access_token);
+      localStorage.removeItem("access_token");
+    });
+  }
+
   return state;
 }
 

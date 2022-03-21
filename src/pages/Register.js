@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "twin.macro";
 import { signUpUser } from "../API";
-import { playPause } from "../store";
+import { registerStatus } from "../store";
 
 const Register = () => {
   const history = useNavigate();
@@ -27,8 +27,7 @@ const Register = () => {
   const signUpRegister = async (user) => {
     const correctUser = await signUpUser(user);
     if (correctUser) {
-      dispatch(playPause());
-      console.log("toto");
+      dispatch(registerStatus());
       history("/sign-in");
     } else {
       history("/page-404");
